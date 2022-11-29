@@ -304,7 +304,19 @@ final class WebPImageReader extends ImageReaderBase {
                         long chunkStart = imageInput.getStreamPosition();
 
                         if (nextChunk == WebP.CHUNK_ICCP) {
-                            iccProfile = ColorProfiles.readProfile(IIOUtil.createStreamAdapter(imageInput, chunkLength));
+                            ICC_Profile iccProfile =
+                                ColorProfiles.readProfile(IIOUtil.createStreamAdapter(imageInput, chunkLength));
+                            
+                            if (iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_sRGB).getData()
+                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_GRAY).getData()
+                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_PYCC).getData()
+                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_LINEAR_RGB).getData()
+                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_CIEXYZ).getData()) {
+                                this.iccProfile = iccProfile;
+                            } else {
+                                throw new IllegalStateException("ICC profile not matching "
+                                    + "recognised lists");
+                            }
                         }
                         else {
                             processWarningOccurred(String.format("Expected 'ICCP' chunk, '%s' chunk encountered", fourCC(nextChunk)));
