@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.twelvemonkeys.imageio</groupId>
         <artifactId>imageio</artifactId>
-        <version>3.10.0-EBX-SNAPSHOT</version>
+        <version>3.10.1-EBX</version>
     </parent>
     <artifactId>imageio-core</artifactId>
     <name>TwelveMonkeys :: ImageIO :: Core</name>
