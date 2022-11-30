@@ -58,8 +58,11 @@ import java.io.IOException;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -70,6 +73,13 @@ import static java.lang.Math.min;
 final class WebPImageReader extends ImageReaderBase {
 
     final static boolean DEBUG = "true".equalsIgnoreCase(System.getProperty("com.twelvemonkeys.imageio.plugins.webp.debug"));
+    
+    private static final Set<byte[]> RECOGNISED_ICC_PROFILES = new HashSet<>(Arrays.asList(
+        ICC_Profile.getInstance(ColorSpace.CS_sRGB).getData(),
+        ICC_Profile.getInstance(ColorSpace.CS_GRAY).getData(),
+        ICC_Profile.getInstance(ColorSpace.CS_PYCC).getData(),
+        ICC_Profile.getInstance(ColorSpace.CS_LINEAR_RGB).getData(),
+        ICC_Profile.getInstance(ColorSpace.CS_CIEXYZ).getData()));
 
     private LSBBitReader lsbBitReader;
 
@@ -306,12 +316,9 @@ final class WebPImageReader extends ImageReaderBase {
                         if (nextChunk == WebP.CHUNK_ICCP) {
                             ICC_Profile iccProfile =
                                 ColorProfiles.readProfile(IIOUtil.createStreamAdapter(imageInput, chunkLength));
-                            
-                            if (iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_sRGB).getData()
-                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_GRAY).getData()
-                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_PYCC).getData()
-                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_LINEAR_RGB).getData()
-                                ||iccProfile.getData() == ICC_Profile.getInstance(ColorSpace.CS_CIEXYZ).getData()) {
+                            // Only allow recognised ICC profiles to avoid strange
+                            // interpretations of colour models (i.e. the image turning green)
+                            if (RECOGNISED_ICC_PROFILES.contains(iccProfile.getData())) {
                                 this.iccProfile = iccProfile;
                             } else {
                                 throw new IllegalStateException("ICC profile not matching "
