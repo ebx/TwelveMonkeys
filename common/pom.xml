@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.twelvemonkeys</groupId>
         <artifactId>twelvemonkeys</artifactId>
-        <version>3.10.0-EBX-SNAPSHOT</version>
+        <version>3.10.1-EBX</version>
     </parent>
     <groupId>com.twelvemonkeys.common</groupId>
     <artifactId>common</artifactId>
