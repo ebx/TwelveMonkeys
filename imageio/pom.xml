@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.twelvemonkeys</groupId>
         <artifactId>twelvemonkeys</artifactId>
-        <version>3.10.2-EBX</version>
+        <version>3.10.3-EBX</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.twelvemonkeys.imageio</groupId>
@@ -68,29 +68,29 @@
         <dependency>
             <groupId>com.twelvemonkeys.common</groupId>
             <artifactId>common-lang</artifactId>
-            <version>${project.version}</version>
+            <version>3.9.4</version>
         </dependency>
         <dependency>
             <groupId>com.twelvemonkeys.common</groupId>
             <artifactId>common-io</artifactId>
-            <version>${project.version}</version>
+            <version>3.9.4</version>
         </dependency>
         <dependency>
             <groupId>com.twelvemonkeys.common</groupId>
             <artifactId>common-image</artifactId>
-            <version>${project.version}</version>
+            <version>3.9.4</version>
         </dependency>
         <dependency>
             <groupId>com.twelvemonkeys.common</groupId>
             <artifactId>common-lang</artifactId>
-            <version>${project.version}</version>
+            <version>3.9.4</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.twelvemonkeys.common</groupId>
             <artifactId>common-io</artifactId>
-            <version>${project.version}</version>
+            <version>3.9.4</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
@@ -122,49 +122,49 @@
             <dependency>
                 <groupId>com.twelvemonkeys.common</groupId>
                 <artifactId>common-lang</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
             </dependency>
 
             <dependency>
                 <groupId>com.twelvemonkeys.common</groupId>
                 <artifactId>common-io</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
             </dependency>
 
             <dependency>
                 <groupId>com.twelvemonkeys.common</groupId>
                 <artifactId>common-image</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
             </dependency>
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>imageio-core</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
             </dependency>
 
 	        <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>imageio-metadata</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
             </dependency>
 
 	        <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>imageio-jpeg</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
             </dependency>
 
 	        <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>imageio-tiff</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
             </dependency>
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>imageio-core</artifactId>
-                <version>${project.version}</version>
+                <version>3.9.4</version>
                 <type>test-jar</type>
                 <scope>test</scope>
             </dependency>
